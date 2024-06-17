@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import './globals.css';
+import '@/global/styles/globals.css';
 import { cn } from '@/shared/lib/utils';
+import { ThemeProvider } from 'next-themes';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -16,8 +17,13 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang='en'>
-			<body className={cn('min-h-screen bg-background font-sans antialiased', inter.variable)}>{children}</body>
+		<html
+			lang='ru'
+			suppressHydrationWarning
+		>
+			<body className={cn('min-h-screen bg-background font-sans antialiased', inter.variable)}>
+				<ThemeProvider attribute='class'>{children}</ThemeProvider>
+			</body>
 		</html>
 	);
 }
