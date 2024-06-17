@@ -9,7 +9,6 @@ const defaultValue: IAppliedFilters = {
 };
 
 const reducer = (state: IAppliedFilters, action: Action) => {
-	console.log(action.type);
 	switch (action.type) {
 		case ActionType.toggleBrand:
 			return toggleBrand(state, action.payload);

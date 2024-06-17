@@ -1,13 +1,6 @@
+import { CardContent, CardFooter, CardHeader, Card as CardPrimitive, CardTitle } from '@/shared/components/ui/card';
 import Image from 'next/image';
 import { ICar } from '../model/types';
-import {
-	CardContent,
-	CardDescription,
-	CardFooter,
-	CardHeader,
-	Card as CardPrimitive,
-	CardTitle,
-} from '@/shared/components/ui/card';
 
 interface CardProps {
 	className?: string;

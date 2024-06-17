@@ -62,9 +62,5 @@ export function ResponsiveRenderer(props: ResponsiveRendererProps) {
 		setComponent(cloneElement(renderContent(), undefined, children));
 	}, [screenSize]);
 
-	useEffect(() => {
-		console.log(component);
-	}, [component]);
-
 	return <>{component}</>;
 }

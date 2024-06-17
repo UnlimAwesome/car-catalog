@@ -20,7 +20,6 @@ interface FiltersProps {
 export const FiltersView = (props: FiltersProps) => {
 	const { className, filters, ...otherProps } = props;
 	const searchParams = useSearchParams();
-	console.log(Array.from(searchParams?.entries() || []));
 	const { appliedFilters, dispatchFilterAction } = useFilters();
 	return (
 		<div
