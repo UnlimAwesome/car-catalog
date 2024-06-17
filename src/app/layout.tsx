@@ -22,7 +22,9 @@ export default function RootLayout({
 			suppressHydrationWarning
 		>
 			<body className={cn('min-h-screen bg-background font-sans antialiased', inter.variable)}>
-				<ThemeProvider attribute='class'>{children}</ThemeProvider>
+				<ThemeProvider attribute='class'>
+					<main className='flex min-h-screen flex-col items-center justify-center p-24'>{children}</main>
+				</ThemeProvider>
 			</body>
 		</html>
 	);
