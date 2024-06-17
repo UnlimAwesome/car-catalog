@@ -15,7 +15,7 @@ export const Drawer = (props: { children?: ReactNode; trigger: ReactNode; title?
 	return (
 		<DrawerPrimitive>
 			<DrawerTrigger asChild>{trigger}</DrawerTrigger>
-			<DrawerContent>
+			<DrawerContent className='p-3'>
 				{(title || description) && (
 					<DrawerHeader>
 						{title && <DrawerTitle>{title}</DrawerTitle>}
