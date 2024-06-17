@@ -1,3 +1,4 @@
+import { ToggleTheme } from '@/features/ToggleTheme';
 import { cn } from '@/shared/lib/utils';
 import { CarFilters } from '@/widgets/CarFilters';
 import { ResponsiveSidebar } from '@/widgets/ResponsiveSidebar';
@@ -13,6 +14,7 @@ export const Page = (props: PageProps) => {
 			className={cn(className)}
 			{...otherProps}
 		>
+			<ToggleTheme />
 			<ResponsiveSidebar>
 				<CarFilters />
 			</ResponsiveSidebar>

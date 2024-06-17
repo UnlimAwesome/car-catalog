@@ -21,11 +21,14 @@ export default function RootLayout({
 			lang='ru'
 			suppressHydrationWarning
 		>
-			<body className={cn('min-h-screen bg-background font-sans antialiased', inter.variable)}>
-				<ThemeProvider attribute='class'>
-					<main className='flex min-h-screen flex-col items-center bg-background justify-center p-24'>
-						{children}
-					</main>
+			<body className={cn('min-h-screen font-sans antialiased', inter.variable)}>
+				<ThemeProvider
+					attribute='class'
+					defaultTheme='system'
+					enableSystem
+					disableTransitionOnChange
+				>
+					<main className='flex min-h-screen flex-col items-center justify-center p-24'>{children}</main>
 				</ThemeProvider>
 			</body>
 		</html>
