@@ -1,1 +1,1 @@
-export { Sidebar as CarFilters } from './ui/Sidebar';
+export { Filters as CarFilters } from './ui/Filters';

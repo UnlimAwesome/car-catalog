@@ -1,4 +1,6 @@
-import { useState, useEffect, ReactNode, cloneElement } from 'react';
+'use client';
+
+import { useState, useEffect, ReactNode, cloneElement, ReactElement } from 'react';
 
 const ScreenSize = {
 	sm: 640,
@@ -24,6 +26,23 @@ interface ResponsiveRendererProps {
 export function ResponsiveRenderer(props: ResponsiveRendererProps) {
 	const { render, children } = props;
 	const [screenSize, setScreenSize] = useState<number>(ScreenSize.sm);
+	const [component, setComponent] = useState<ReactElement>();
+	const renderContent = () => {
+		switch (screenSize) {
+			case ScreenSize.sm:
+				if (render.sm) return render.sm;
+			case ScreenSize.md:
+				if (render.md) return render.md;
+			case ScreenSize.lg:
+				if (render.lg) return render.lg;
+			case ScreenSize.xl:
+				if (render.xl) return render.xl;
+			case ScreenSize.xxl:
+				if (render.xxl) return render.xxl;
+			default:
+				return Object.values(render)[Object.values(render).length - 1];
+		}
+	};
 
 	useEffect(() => {
 		if (typeof window === 'undefined') return;
@@ -39,22 +58,13 @@ export function ResponsiveRenderer(props: ResponsiveRendererProps) {
 		return () => window.removeEventListener('resize', handleResize);
 	}, []);
 
-	const renderContent = () => {
-		switch (screenSize) {
-			case ScreenSize.sm:
-				if (render.sm) return render.sm;
-			case ScreenSize.md:
-				if (render.md) return render.md;
-			case ScreenSize.lg:
-				if (render.lg) return render.lg;
-			case ScreenSize.xl:
-				if (render.xl) return render.xl;
-			case ScreenSize.xxl:
-				if (render.xxl) return render.xxl;
-			default:
-				return Object.values(render)[0];
-		}
-	};
+	useEffect(() => {
+		setComponent(cloneElement(renderContent(), undefined, children));
+	}, [screenSize]);
 
-	return <>{cloneElement(renderContent(), { children })}</>;
+	useEffect(() => {
+		console.log(component);
+	}, [component]);
+
+	return <>{component}</>;
 }

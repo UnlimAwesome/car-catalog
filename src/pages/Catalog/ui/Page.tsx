@@ -1,5 +1,6 @@
 import { cn } from '@/shared/lib/utils';
 import { CarFilters } from '@/widgets/CarFilters';
+import { ResponsiveSidebar } from '@/widgets/ResponsiveSidebar';
 
 interface PageProps {
 	className?: string;
@@ -12,7 +13,9 @@ export const Page = (props: PageProps) => {
 			className={cn(className)}
 			{...otherProps}
 		>
-			<CarFilters />
+			<ResponsiveSidebar>
+				<CarFilters />
+			</ResponsiveSidebar>
 		</div>
 	);
 };
