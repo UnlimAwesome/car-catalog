@@ -6,7 +6,6 @@ import { TarifFilter } from '@/features/TarifFilter';
 import { cn } from '@/shared/lib/utils';
 import { ActionType } from '@/widgets/CarFilters/model/types';
 import { useFilters } from '@/widgets/CarFilters/model/useFilters';
-import { useSearchParams } from 'next/navigation';
 
 interface FiltersProps {
 	filters: {
@@ -19,7 +18,6 @@ interface FiltersProps {
 
 export const FiltersView = (props: FiltersProps) => {
 	const { className, filters, ...otherProps } = props;
-	const searchParams = useSearchParams();
 	const { appliedFilters, dispatchFilterAction } = useFilters();
 	return (
 		<div

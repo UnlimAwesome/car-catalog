@@ -8,7 +8,13 @@ import {
 } from '@/shared/components/ui/sheet';
 import { ReactNode } from 'react';
 
-export const Sheet = (props: { children?: ReactNode; trigger: ReactNode; title?: string; description?: string }) => {
+interface SheetProps {
+	children?: ReactNode;
+	trigger: ReactNode;
+	title?: string;
+	description?: string;
+}
+export const Sheet = (props: SheetProps) => {
 	const { children, trigger, title, description } = props;
 	return (
 		<SheetPrimitive>

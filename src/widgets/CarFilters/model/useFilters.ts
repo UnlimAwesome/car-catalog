@@ -1,5 +1,5 @@
 import { toggleBrand, toggleModel, toggleTarif } from '@/widgets/CarFilters/model/actions';
-import { useReducer, useState } from 'react';
+import { useReducer } from 'react';
 import { Action, ActionType, IAppliedFilters } from './types';
 
 const defaultValue: IAppliedFilters = {

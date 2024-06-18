@@ -10,7 +10,15 @@ import {
 	DrawerTrigger,
 } from '@/shared/components/ui/drawer';
 import { ReactNode } from 'react';
-export const Drawer = (props: { children?: ReactNode; trigger: ReactNode; title?: string; description?: string }) => {
+
+interface DrawerProps {
+	children?: ReactNode;
+	trigger: ReactNode;
+	title?: string;
+	description?: string;
+	onSubmit?: () => void;
+}
+export const Drawer = (props: DrawerProps) => {
 	const { children, trigger, title, description } = props;
 	return (
 		<DrawerPrimitive>
@@ -24,9 +32,9 @@ export const Drawer = (props: { children?: ReactNode; trigger: ReactNode; title?
 				)}
 				{children}
 				<DrawerFooter>
-					<Button>Submit</Button>
+					<Button>Подтвердить</Button>
 					<DrawerClose asChild>
-						<Button variant='outline'>Cancel</Button>
+						<Button variant='outline'>Отмена</Button>
 					</DrawerClose>
 				</DrawerFooter>
 			</DrawerContent>
