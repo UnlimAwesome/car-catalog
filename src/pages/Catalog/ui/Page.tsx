@@ -14,13 +14,15 @@ export const Page = (props: PageProps) => {
 	const { className, searchParams, ...otherProps } = props;
 	return (
 		<div
-			className={cn('size-full', className)}
+			className={cn('size-full flex flex-col justify-between', className)}
 			{...otherProps}
 		>
-			<ToggleTheme variant='ghost' />
-			<ResponsiveSidebar>
-				<CarFilters />
-			</ResponsiveSidebar>
+			<div className='flex gap-2'>
+				<ResponsiveSidebar>
+					<CarFilters />
+				</ResponsiveSidebar>
+				<ToggleTheme variant='ghost' />
+			</div>
 			<CarCatalog searchParams={searchParams} />
 		</div>
 	);
