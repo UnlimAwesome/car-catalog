@@ -1,4 +1,6 @@
+import { searchParamsToQuery } from '@/shared/lib/searchParamsToQuery';
 import { IAppliedFilters } from './types';
+import { ISearchParams } from '@/shared/lib/ISearchParams';
 
 export function toggleBrand(state: IAppliedFilters, brand: string): IAppliedFilters {
 	if (state.brands.length === 0) {

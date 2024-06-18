@@ -18,7 +18,7 @@ export const List = async (props: ListProps) => {
 		<>
 			<div
 				className={cn(
-					'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 p-8',
+					'flex flex-col sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 p-8',
 					className
 				)}
 				{...otherProps}

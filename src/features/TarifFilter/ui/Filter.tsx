@@ -6,10 +6,11 @@ interface FilterProps {
 	filter: ITarifFilter;
 	className?: string;
 	onChange?: (value: string) => void;
+	applied: string[];
 }
 
 export const Filter = (props: FilterProps) => {
-	const { className, filter, onChange, ...otherProps } = props;
+	const { className, filter, onChange, applied, ...otherProps } = props;
 	return (
 		<div className='flex flex-col gap-2'>
 			<Label className='text-lg'>{filter.name}</Label>
@@ -17,6 +18,7 @@ export const Filter = (props: FilterProps) => {
 				type='multiple'
 				variant='outline'
 				className='flex flex-wrap gap-2 justify-start'
+				value={applied}
 			>
 				{Object.entries(filter.values).map(([key, value]) => (
 					<ToggleGroupItem

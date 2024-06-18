@@ -2,6 +2,7 @@ export enum ActionType {
 	toggleBrand = 'toggleBrand',
 	toggleModel = 'toggleModel',
 	toggleTarif = 'toggleTarif',
+	applyFilters = 'applyFilters',
 }
 export interface IAbstractAction {
 	type: ActionType;

@@ -19,7 +19,7 @@ export const Page = (props: PageProps) => {
 		>
 			<div className='flex gap-2'>
 				<ResponsiveSidebar>
-					<CarFilters />
+					<CarFilters searchParams={searchParams} />
 				</ResponsiveSidebar>
 				<ToggleTheme variant='ghost' />
 			</div>

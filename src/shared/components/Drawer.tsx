@@ -32,7 +32,7 @@ export const Drawer = (props: DrawerProps) => {
 				)}
 				{children}
 				<DrawerFooter>
-					<Button>Подтвердить</Button>
+					{/* <Button>Подтвердить</Button> */}
 					<DrawerClose asChild>
 						<Button variant='outline'>Отмена</Button>
 					</DrawerClose>

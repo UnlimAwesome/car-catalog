@@ -1,6 +1,9 @@
-import { toggleBrand, toggleModel, toggleTarif } from '@/widgets/CarFilters/model/actions';
+import { toggleBrand, toggleModel, toggleTarif } from './actions';
 import { useReducer } from 'react';
 import { Action, ActionType, IAppliedFilters } from './types';
+import { useSearchParams } from 'next/navigation';
+import { IBrandFilter, IModelFilter, ITarifFilter } from '@/entities/Filter';
+import { searchParamsToAppliedFilters } from './searchParamsToAppliedFilters';
 
 const defaultValue: IAppliedFilters = {
 	brands: [],
@@ -19,8 +22,15 @@ const reducer = (state: IAppliedFilters, action: Action) => {
 	}
 };
 
-export function useFilters(filters?: IAppliedFilters) {
-	const [appliedFilters, dispatchFilterAction] = useReducer(reducer, filters, () => filters || defaultValue);
+export function useFilters(filters: {
+	brandFilter: IBrandFilter;
+	modelFilter: IModelFilter;
+	tarifFilter: ITarifFilter;
+}) {
+	const searchParams = useSearchParams();
+	const initFilters = searchParamsToAppliedFilters(filters, searchParams);
+
+	const [appliedFilters, dispatchFilterAction] = useReducer(reducer, initFilters);
 
 	return { appliedFilters, dispatchFilterAction };
 }
