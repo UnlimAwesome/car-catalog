@@ -1,6 +1,7 @@
 import { CardContent, CardFooter, CardHeader, Card as CardPrimitive, CardTitle } from '@/shared/components/ui/card';
 import Image from 'next/image';
 import { ICar } from '../model/types';
+import { cn } from '@/shared/lib/utils';
 
 interface CardProps {
 	className?: string;
@@ -10,7 +11,7 @@ interface CardProps {
 export const Card = (props: CardProps) => {
 	const { className, car, ...otherProps } = props;
 	return (
-		<CardPrimitive className='overflow-hidden min-w-64'>
+		<CardPrimitive className={cn('overflow-hidden min-w-64', className)}>
 			<CardHeader className='flex flex-col min-w-20 overflow-hidden p-0 h-40'>
 				{car.image && (
 					<Image
@@ -23,16 +24,18 @@ export const Card = (props: CardProps) => {
 				)}
 			</CardHeader>
 			<CardContent className='flex pr-2 w-auto items-start justify-between gap-5 py-2'>
-				<div>
-					<CardTitle className='z-10'>{car.brand + ' ' + car.model}</CardTitle>
-					<p className='text-lg font-semibold'>{car.price.toLocaleString('ru-RU') + ' ₽'}</p>
-				</div>
-				<div className='outline-2 outline rounded flex h-6 items-end flex-1 max-w-28'>
-					<p className='text-center flex-1 font-semibold align-bottom h-full px-2'>
-						{car.number.slice(0, 6).toLocaleLowerCase('ru-RU')}
-					</p>
-					<p className='w-1/4 min-w-min border-l-2 border-primary ml-auto font-semibold text-center h-full text-sm px-1'>
-						{car.number.slice(6)}
+				<CardTitle className='z-10'>{car.brand + ' ' + car.model}</CardTitle>
+				<div className='flex flex-col gap-4'>
+					<div className='outline-2 outline rounded flex h-6 items-end flex-1 max-w-28'>
+						<p className='text-center flex-1 font-semibold align-bottom h-full px-2'>
+							{car.number.slice(0, 6).toLocaleLowerCase('ru-RU')}
+						</p>
+						<p className='w-1/4 min-w-min border-l-2 border-primary ml-auto font-semibold text-center h-full text-sm px-1'>
+							{car.number.slice(6)}
+						</p>
+					</div>
+					<p className='text-lg font-semibold text-nowrap text-end'>
+						{car.price.toLocaleString('ru-RU') + ' ₽'}
 					</p>
 				</div>
 			</CardContent>

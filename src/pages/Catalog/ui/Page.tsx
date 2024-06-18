@@ -23,7 +23,10 @@ export const Page = (props: PageProps) => {
 				</ResponsiveSidebar>
 				<ToggleTheme variant='ghost' />
 			</div>
-			<CarCatalog searchParams={searchParams} />
+			<CarCatalog
+				searchParams={searchParams}
+				className='h-max flex-1'
+			/>
 		</div>
 	);
 };
