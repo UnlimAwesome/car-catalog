@@ -26,6 +26,9 @@ interface PaginationProps {
 
 export const Pagination = (props: PaginationProps) => {
 	const { className, pages, currentPage, searchParams, items, ...otherProps } = props;
+
+	console.log('🚀 ~ Pagination ~ searchParams:', searchParams);
+
 	const [itemsToShow, setItemsToShow] = useState(7);
 	const { screenSize } = useScreenSize();
 
@@ -48,10 +51,21 @@ export const Pagination = (props: PaginationProps) => {
 		assert(typeof page === 'number', 'page must be a number');
 		let url = '/';
 		if (searchParams) {
-			url += '?' + searchParamsToQuery({ ...searchParams, page: page });
+			url += (
+				'?' +
+				searchParams.brand?.map((b) => 'brand=' + b).join('&') +
+				'&' +
+				searchParams.model?.map((m) => 'model=' + m).join('&') +
+				'&' +
+				searchParams.tarif?.map((t) => 'tarif=' + t).join('&') +
+				'&page=' +
+				page
+			).replaceAll('undefined&', '');
 		} else {
 			url += '?page=' + page;
 		}
+
+		console.log('🚀 ~ createLink ~ url:', url);
 		return url;
 	};
 	return (

@@ -10,6 +10,7 @@ import { cn } from '@/shared/lib/utils';
 import { useRouter } from 'next/navigation';
 import { ActionType } from '../model/types';
 import { useFilters } from '../model/useFilters';
+import { DialogClose } from '@radix-ui/react-dialog';
 
 interface FiltersProps {
 	filters: {
@@ -52,30 +53,28 @@ export const FiltersView = (props: FiltersProps) => {
 					onChange={(value) => dispatchFilterAction({ type: ActionType.toggleTarif, payload: value })}
 					applied={appliedFilters.tarifs}
 				/>
-				<DrawerClose asChild>
-					<SheetTrigger asChild>
-						<Button
-							onClick={function applyFilters() {
-								let url = '/?';
-								appliedFilters.brands.forEach((b) => {
-									url += `brand=${b}&`;
-								});
+				<DialogClose asChild>
+					<Button
+						onClick={function applyFilters() {
+							let url = '/?';
+							appliedFilters.brands.forEach((b) => {
+								url += `brand=${b}&`;
+							});
 
-								appliedFilters.models.forEach((m) => {
-									url += `model=${m.name}&`;
-								});
+							appliedFilters.models.forEach((m) => {
+								url += `model=${m.name}&`;
+							});
 
-								appliedFilters.tarifs.forEach((t) => {
-									url += `tarif=${t}&`;
-								});
+							appliedFilters.tarifs.forEach((t) => {
+								url += `tarif=${t}&`;
+							});
 
-								router.push(url);
-							}}
-						>
-							Подтвердить
-						</Button>
-					</SheetTrigger>
-				</DrawerClose>
+							router.push(url);
+						}}
+					>
+						Подтвердить
+					</Button>
+				</DialogClose>
 			</div>
 		)
 	);
