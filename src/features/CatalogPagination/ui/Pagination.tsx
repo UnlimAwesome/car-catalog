@@ -1,3 +1,5 @@
+'use client';
+
 import {
 	Pagination as PaginationPrimitive,
 	PaginationContent,
@@ -7,20 +9,41 @@ import {
 	PaginationLink,
 	PaginationEllipsis,
 } from '@/shared/components/ui/pagination';
+import { ScreenSize } from '@/shared/lib/IScreenSize';
 import { ISearchParams } from '@/shared/lib/ISearchParams';
 import { searchParamsToQuery } from '@/shared/lib/searchParamsToQuery';
+import { useScreenSize } from '@/shared/lib/useScreenSize';
 import assert from 'assert';
+import { useEffect, useState } from 'react';
 
 interface PaginationProps {
 	currentPage: number;
 	pages: number;
 	className?: string;
 	searchParams?: ISearchParams;
-	itemsToShow?: number;
+	items?: number;
 }
 
 export const Pagination = (props: PaginationProps) => {
-	const { className, pages, currentPage, searchParams, itemsToShow = 5, ...otherProps } = props;
+	const { className, pages, currentPage, searchParams, items, ...otherProps } = props;
+	const [itemsToShow, setItemsToShow] = useState(7);
+	const { screenSize } = useScreenSize();
+
+	useEffect(() => {
+		switch (screenSize) {
+			case ScreenSize.sm:
+				setItemsToShow(3);
+				break;
+			case ScreenSize.md:
+				setItemsToShow(5);
+				break;
+			case ScreenSize.lg:
+				setItemsToShow(7);
+				break;
+			default:
+				setItemsToShow(items || 7);
+		}
+	}, [screenSize]);
 	const createLink = (page: number) => {
 		assert(typeof page === 'number', 'page must be a number');
 		let url = '/';
@@ -37,7 +60,7 @@ export const Pagination = (props: PaginationProps) => {
 				className={className}
 				{...otherProps}
 			>
-				<PaginationContent>
+				<PaginationContent className='gap-0 md:gap-1'>
 					{currentPage > 1 && (
 						<PaginationItem>
 							<PaginationPrevious href={createLink(currentPage - 1)} />
@@ -47,15 +70,11 @@ export const Pagination = (props: PaginationProps) => {
 						.fill(0)
 						.map((_, index, arr) => {
 							const itemsLeft = arr.length - currentPage;
-							if (
-								index + 1 ===
-									currentPage - (itemsToShow + 1 - Math.min(itemsLeft, Math.ceil(itemsToShow / 2))) ||
-								(index + 1 ===
-									currentPage + Math.max(itemsToShow + 1 - currentPage, Math.ceil(itemsToShow / 2)) &&
-									index < arr.length)
-							) {
-								console.log('🚀 ~ .map ~ index:', index);
-
+							const right =
+								currentPage + Math.max(itemsToShow - currentPage, Math.floor(itemsToShow / 2));
+							const left =
+								currentPage - Math.max(itemsToShow - 1 - itemsLeft, Math.floor(itemsToShow / 2));
+							if (index + 1 === right + 1 || (index + 1 === left - 1 && index < arr.length)) {
 								return (
 									<PaginationItem key={index}>
 										<PaginationEllipsis />
@@ -63,13 +82,7 @@ export const Pagination = (props: PaginationProps) => {
 								);
 							}
 
-							// console.log('🚀 ~ .map ~ itemsLeft:', itemsLeft);
-
-							if (
-								index + 1 <
-									currentPage + Math.max(itemsToShow - currentPage, Math.ceil(itemsToShow / 2)) &&
-								index + 1 > currentPage - Math.max(itemsToShow - itemsLeft, Math.ceil(itemsToShow / 2))
-							) {
+							if (index + 1 <= right && index + 1 >= left) {
 								return (
 									<PaginationItem key={index}>
 										<PaginationLink

@@ -5,11 +5,9 @@ import { searchParamsToQuery } from '@/shared/lib/searchParamsToQuery';
 
 export async function getCatalog(searchParams: ISearchParams | undefined) {
 	let url = 'https://test.taxivoshod.ru/api/test/?w=catalog-cars';
-	console.log(searchParams);
 	if (searchParams) {
 		url += '&' + searchParamsToQuery(searchParams);
 	}
-	console.log(url.toString());
 	const response = await fetch(url, {
 		cache: 'force-cache',
 	});

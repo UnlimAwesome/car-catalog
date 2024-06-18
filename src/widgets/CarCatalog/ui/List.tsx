@@ -1,10 +1,8 @@
-import { cn } from '@/shared/lib/utils';
-import { getCatalog } from '../api/getCatalog';
 import { CarCard } from '@/entities/Car';
 import { ISearchParams } from '@/shared/lib/ISearchParams';
+import { cn } from '@/shared/lib/utils';
+import { getCatalog } from '../api/getCatalog';
 
-import { searchParamsToQuery } from '@/shared/lib/searchParamsToQuery';
-import assert from 'assert';
 import { CatalogPagination } from '@/features/CatalogPagination';
 
 interface ListProps {

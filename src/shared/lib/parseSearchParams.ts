@@ -2,7 +2,6 @@ import { ISearchParams } from '@/shared/lib/ISearchParams';
 
 export function parseSearchParams(searchParams: any | undefined): ISearchParams | undefined {
 	const obj: ISearchParams = {};
-	console.log('parseSearchParams', searchParams, !searchParams);
 	if (Object.values(searchParams).length === 0 || !searchParams) return undefined;
 
 	if (searchParams.brand) {
