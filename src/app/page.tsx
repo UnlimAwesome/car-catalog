@@ -1,4 +1,4 @@
-import { CatalogPage } from '@/pages/Catalog';
+import { CatalogPage } from '@/pages-layer/Catalog';
 import { parseSearchParams } from '@/shared/lib/parseSearchParams';
 
 export default function Home({ searchParams }: { searchParams: any }) {

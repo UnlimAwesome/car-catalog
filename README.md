@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Car Catalog
 
-## Getting Started
+## Описание проекта
 
-First, run the development server:
+Car Catalog - это веб-приложение, созданное с использованием Next.js, для отображения списка автомобилей с фильтрацией и постраничным разбиением, а также детальной информации о каждом автомобиле.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Функционал
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. **Список автомобилей**:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+    - Фильтрация по марке, модели и тарифу.
+    - Постраничное разбиение списка автомобилей.
+    - Отображение информации: картинка, бренд, модель, регистрационный номер, цена и тариф.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+2. **Карточка автомобиля**:
+    - Отображение детальной информации об автомобиле.
+    - Слайдер для просмотра изображений автомобиля.
+    - Кнопка "назад" для возврата к списку автомобилей с сохранением текущих фильтров и страницы.
 
-## Learn More
+## Технологии
 
-To learn more about Next.js, take a look at the following resources:
+-   React
+-   Tailwind CSS
+-   TypeScript
+-   shadcn/ui
+-   FSD - feature-sliced-design
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Особенности реализации
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+-   Реализован [Intercepting Routes](https://nextjs.org/docs/app/building-your-application/routing/intercepting-routes), благодаря которому при просмотре авто в каталоге открывается модальное окно, при обновлении страницы открывается страница авто
+-   Запросы к API происходят внутри серверных компонентов
+-   Фильтры и страница каталога хранятся внутри url
 
-## Deploy on Vercel
+## Установка и запуск
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Клонируйте репозиторий:
+    ```bash
+    git clone https://github.com/UnlimAwesome/car-catalog.git
+    ```
+2. Установите зависимости
+    ```bash
+    npm install
+    ```
+3. Запустите проект
+    ```bash
+    npm run dev
+    ```
+4. Откройте [http://localhost:3000](http://localhost:3000) в браузере, чтобы увидеть результат.

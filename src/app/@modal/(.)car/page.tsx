@@ -1,4 +1,4 @@
-import { CarPage } from '@/pages/CarPage';
+import { CarPage } from '@/pages-layer/CarPage';
 import { CarModal } from '@/widgets/CarModal';
 import { redirect } from 'next/navigation';
 
