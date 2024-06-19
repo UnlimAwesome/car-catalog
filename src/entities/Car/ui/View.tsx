@@ -21,7 +21,7 @@ export const View = (props: ViewProps) => {
 	return (
 		<div
 			className={cn(
-				'flex flex-col gap-[min(20px,5%)] max-h-4/5 w-[min(1240px,95%)] items-center px-[min(20px,5%)]',
+				'flex flex-col gap-[min(20px,5%)] max-h-4/5 w-[min(1240px,95%)] items-center md:px-[min(20px,5%)]',
 				className
 			)}
 			{...otherProps}

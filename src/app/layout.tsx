@@ -13,8 +13,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
 	children,
+	modal,
 }: Readonly<{
 	children: React.ReactNode;
+	modal: React.ReactNode;
 }>) {
 	return (
 		<html
@@ -28,7 +30,10 @@ export default function RootLayout({
 					enableSystem
 					disableTransitionOnChange
 				>
-					<main className='flex flex-col items-center justify-center box-border p-3 flex-1'>{children}</main>
+					<main className='flex flex-col items-center justify-center box-border p-3 flex-1'>
+						{children}
+						{modal}
+					</main>
 				</ThemeProvider>
 			</body>
 		</html>
