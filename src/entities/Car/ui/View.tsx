@@ -20,7 +20,7 @@ export const View = (props: ViewProps) => {
 	return (
 		<div
 			className={cn(
-				'flex flex-col gap-[min(20px,5%)] h-4/5 w-[min(1240px,95%)] items-center px-[min(20px,5%)]',
+				'flex flex-col gap-[min(20px,5%)] max-h-4/5 w-[min(1240px,95%)] items-center px-[min(20px,5%)]',
 				className
 			)}
 			{...otherProps}
@@ -51,9 +51,9 @@ export const View = (props: ViewProps) => {
 				</div>
 			</Carousel>
 
-			<div className='flex justify-between w-full'>
+			<div className='flex justify-between w-full mt-4'>
 				<div className='flex flex-col gap-4'>
-					<Label className='text-2xl'>{car.brand + ' ' + car.model}</Label>
+					<Label className='text-xl md:text-2xl font-semibold'>{car.brand + ' ' + car.model}</Label>
 					<p className='text-lg font-semibold text-nowrap text-start'>
 						{car.price.toLocaleString('ru-RU') + ' ₽'}
 					</p>
