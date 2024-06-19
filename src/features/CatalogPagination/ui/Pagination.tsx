@@ -11,7 +11,6 @@ import {
 } from '@/shared/components/ui/pagination';
 import { ScreenSize } from '@/shared/lib/IScreenSize';
 import { ISearchParams } from '@/shared/lib/ISearchParams';
-import { searchParamsToQuery } from '@/shared/lib/searchParamsToQuery';
 import { useScreenSize } from '@/shared/lib/useScreenSize';
 import assert from 'assert';
 import { useEffect, useState } from 'react';
@@ -26,9 +25,6 @@ interface PaginationProps {
 
 export const Pagination = (props: PaginationProps) => {
 	const { className, pages, currentPage, searchParams, items, ...otherProps } = props;
-
-	console.log('🚀 ~ Pagination ~ searchParams:', searchParams);
-
 	const [itemsToShow, setItemsToShow] = useState(7);
 	const { screenSize } = useScreenSize();
 
@@ -64,8 +60,6 @@ export const Pagination = (props: PaginationProps) => {
 		} else {
 			url += '?page=' + page;
 		}
-
-		console.log('🚀 ~ createLink ~ url:', url);
 		return url;
 	};
 	return (

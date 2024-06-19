@@ -4,13 +4,11 @@ import { BrandFilter } from '@/features/BrandFilter';
 import { ModelFilter } from '@/features/ModelFilter';
 import { TarifFilter } from '@/features/TarifFilter';
 import { Button } from '@/shared/components/ui/button';
-import { DrawerClose } from '@/shared/components/ui/drawer';
-import { SheetTrigger } from '@/shared/components/ui/sheet';
 import { cn } from '@/shared/lib/utils';
+import { DialogClose } from '@radix-ui/react-dialog';
 import { useRouter } from 'next/navigation';
 import { ActionType } from '../model/types';
 import { useFilters } from '../model/useFilters';
-import { DialogClose } from '@radix-ui/react-dialog';
 
 interface FiltersProps {
 	filters: {
