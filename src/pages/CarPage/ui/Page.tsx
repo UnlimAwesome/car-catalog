@@ -13,7 +13,7 @@ export const Page = async (props: PageProps) => {
 
 	return (
 		<div
-			className={cn('size-full flex justify-center items-center', className)}
+			className={cn('size-full flex flex-col justify-center items-center gap-5', className)}
 			{...otherProps}
 		>
 			<CarView car={car} />

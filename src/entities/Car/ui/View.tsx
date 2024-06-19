@@ -9,6 +9,7 @@ import {
 	CarouselPrevious,
 } from '@/shared/components/ui/carousel';
 import { cn } from '@/shared/lib/utils';
+import { NavigateBack } from '@/features/NavigateBack';
 
 interface ViewProps {
 	className?: string;
@@ -25,6 +26,7 @@ export const View = (props: ViewProps) => {
 			)}
 			{...otherProps}
 		>
+			<NavigateBack />
 			<Carousel
 				className='flex-1 h-3/5'
 				opts={{ align: 'start' }}

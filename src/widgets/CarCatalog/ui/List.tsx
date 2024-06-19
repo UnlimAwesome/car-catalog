@@ -4,6 +4,7 @@ import { cn } from '@/shared/lib/utils';
 import { getCatalog } from '../api/getCatalog';
 
 import { CatalogPagination } from '@/features/CatalogPagination';
+import { redirect } from 'next/navigation';
 
 interface ListProps {
 	className?: string;
@@ -13,7 +14,6 @@ interface ListProps {
 export const List = async (props: ListProps) => {
 	const { className, searchParams, ...otherProps } = props;
 	const catalog = await getCatalog(searchParams);
-
 	return (
 		<>
 			<div
