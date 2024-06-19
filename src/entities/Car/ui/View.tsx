@@ -28,13 +28,13 @@ export const View = (props: ViewProps) => {
 		>
 			<NavigateBack />
 			<Carousel
-				className='flex-1 h-3/5'
+				className='flex-1 h-3/5 max-h-[600px]'
 				opts={{ align: 'start' }}
 			>
 				<CarouselContent>
-					{car.images.map((image) => (
+					{car.images?.map((image) => (
 						<CarouselItem
-							className='md:basis-1/2'
+							className={cn(car.images.length > 1 && 'md:basis-1/2')}
 							key={image.id}
 						>
 							<Image

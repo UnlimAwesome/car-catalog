@@ -33,11 +33,11 @@ export const Card = (props: CardProps) => {
 				<CardContent className='flex pr-2 w-auto items-start justify-between gap-5 py-2'>
 					<CardTitle className='z-10'>{car.brand + ' ' + car.model}</CardTitle>
 					<div className='flex flex-col gap-4'>
-						<div className='outline-2 outline rounded flex h-6 items-end flex-1 max-w-28'>
+						<div className='outline-2 outline rounded flex h-6 items-end flex-1 max-w-28 box-content'>
 							<p className='text-center flex-1 font-semibold align-bottom h-full px-2'>
 								{car.number.slice(0, 6).toLocaleLowerCase('ru-RU')}
 							</p>
-							<p className='w-1/4 min-w-min border-l-2 border-primary ml-auto font-semibold text-center h-full text-sm px-1'>
+							<p className='w-1/4 min-w-min border-l-2 border-primary ml-auto font-semibold text-center h-6 text-sm px-1'>
 								{car.number.slice(6)}
 							</p>
 						</div>
